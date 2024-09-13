@@ -46,10 +46,15 @@ export default function Team() {
 
   return (
     <section id="team" className="mx-auto max-w-6xl px-4 sm:px-6">
-      <div className="border-t py-12 md:py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 border-t py-12 [border-image:linear-gradient(to_right,transparent,theme(colors.slate.400/.25),transparent)1] md:py-20">
         {/* Section header */}
         <div className="mx-auto max-w-3xl pb-12 text-center">
-          <h2 className="text-3xl font-semibold text-gray-200">Our Team</h2>
+        <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-200/50">
+              <span className="inline-flex bg-gradient-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent">
+                Team Members
+              </span>
+            </div>
+          <h2 className="text-3xl font-semibold text-gray-200">Meet Our Team</h2>
           <p className="text-lg text-indigo-200/65">
             Explore our community leaders, members, and personnel driving the
             mission of Ethical HCK.
