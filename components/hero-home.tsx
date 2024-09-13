@@ -3,7 +3,7 @@ import VideoThumb from "@/public/images/hero-image-01.jpg";
 export default function HeroHome() {
   return (
     <section>
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl">
         {/* Hero content */}
         <div className="md:py-20">
           {/* Section header */}
