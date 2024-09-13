@@ -16,16 +16,25 @@ const leaders = [
     img: "/images/leader-01.jpg",
     name: "Leader 1",
     position: "Community Leader",
+    instagram: "https://instagram.com/leader",
+    linkedin: "https://linkedin.com/leader",
+    twitter: "https://twitter.com/leader",
   },
   {
     img: "/images/leader-02.jpg",
     name: "Leader 2",
     position: "Community Leader",
+    instagram: "https://instagram.com/leader",
+    linkedin: "https://linkedin.com/leader",
+    twitter: "https://twitter.com/leader",
   },
   {
     img: "/images/leader-03.jpg",
     name: "Leader 3",
     position: "Community Leader",
+    instagram: "https://instagram.com/leader",
+    linkedin: "https://linkedin.com/leader",
+    twitter: "https://twitter.com/leader",
   },
 ];
 
@@ -51,7 +60,39 @@ const personnel = [
 const members = [
   {
     img: "/images/member-01.jpg",
-    name: "Member",
+    name: "Membe_1r",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  {
+    img: "/images/member-01.jpg",
+    name: "Member_2",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  {
+    img: "/images/member-01.jpg",
+    name: "Member_3",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  {
+    img: "/images/member-01.jpg",
+    name: "Member_4",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  {
+    img: "/images/member-01.jpg",
+    name: "Member_4",
     position: "Community Member",
     instagram: "https://instagram.com/member",
     linkedin: "https://linkedin.com/member",
@@ -67,11 +108,13 @@ const items: TabsProps["items"] = [
       <div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {leaders.map((leader, index) => (
-            <TeamCard
-              key={index}
-              img={leader.img}
+            <Cards
               name={leader.name}
-              position={leader.position}
+              title={leader.position}
+              img={leader.img}
+              LinkedIn={leader.linkedin}
+              Instagram={leader.instagram}
+              twitter={leader.twitter}
             />
           ))}
         </div>
@@ -119,12 +162,14 @@ export default function Team() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 border-t py-12 [border-image:linear-gradient(to_right,transparent,theme(colors.slate.400/.25),transparent)1] md:py-20">
         {/* Section header */}
         <div className="mx-auto max-w-3xl pb-12 text-center">
-        <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-200/50">
-              <span className="inline-flex bg-gradient-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent">
-                Team Members
-              </span>
-            </div>
-          <h2 className="text-3xl font-semibold text-gray-200">Meet Our Team</h2>
+          <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-indigo-200/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-indigo-200/50">
+            <span className="inline-flex bg-gradient-to-r from-indigo-500 to-indigo-200 bg-clip-text text-transparent">
+              Team Members
+            </span>
+          </div>
+          <h2 className="text-3xl font-semibold text-gray-200">
+            Meet Our Team
+          </h2>
           <p className="text-lg text-indigo-200/65">
             Explore our community leaders, members, and personnel driving the
             mission of Ethical HCK.
@@ -180,11 +225,14 @@ function SliderControl({ members }: { members: any }) {
   return (
     <div className="overflow-hidden relative">
       <div
-        className="flex transition-transform ease-in-out duration-500 justify-center"
-        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        className="flex justify-around transition-transform ease-in-out duration-500"
+        style={{
+          transform: `translateX(-${(currentSlide * 100) / 3}%)`,
+          width: `${(members.length / 3) * 100}%`,
+        }}
       >
         {members.map((member: any, index: any) => (
-          <div key={index} className="">
+          <div key={index} className="w-1/3 flex-shrink-0">
             <Cards
               name={member.name}
               title={member.position}
