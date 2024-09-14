@@ -60,7 +60,7 @@ const personnel = [
     instagram: "https://instagram.com/personnel",
     linkedin: "https://linkedin.com/personnel",
     twitter: "https://twitter.com/personnel",
-  }
+  },
 ];
 
 const members = [
@@ -235,9 +235,55 @@ const items: TabsProps["items"] = [
     key: "2",
     label: <div className="text-white">Community Members</div>,
     children: (
-      <div className="relative">
-        <SliderControl members={members} />
-      </div>
+      <>
+        <div className="flex gap-20 justify-around overflow-hidden">
+          <div
+            className="flex gap-20 justify-start animate-scroll"
+            style={{ overflow: "hidden" }}
+          >
+            <div
+              className="scroll-container"
+              style={{
+                display: "flex",
+                gap: "20px",
+                animation: "scroll 50s linear infinite",
+                animationPlayState: "running",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.animationPlayState = "paused";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.animationPlayState = "running";
+              }}
+            >
+              {members.map((member, index) => (
+                <Cards
+                  key={index}
+                  name={member.name}
+                  title={member.position}
+                  img={member.img}
+                  LinkedIn={member.linkedin}
+                  Instagram={member.instagram}
+                  twitter={member.twitter}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+        <style jsx>{`
+          @keyframes scroll {
+            0% {
+              transform: translateX(0%);
+            }
+            100% {
+              transform: translateX(-100%);
+            }
+          }
+          .scroll-container {
+            width: fit-content;
+          }
+        `}</style>
+      </>
     ),
   },
   {
@@ -297,60 +343,5 @@ export default function Team() {
         />
       </div>
     </section>
-  );
-}
-
-// Slider for Community Members
-function SliderControl({ members }: { members: any }) {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const visibleCards = 3; 
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === members.length - visibleCards ? 0 : prev + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === 0 ? members.length - visibleCards : prev - 1
-    );
-  };
-  
-  return (
-    <div className="overflow-hidden relative">
-      <div
-        className="flex transition-transform ease-in-out duration-500"
-        style={{
-          transform: `translateX(-${(currentSlide * 100) / visibleCards}%)`, // Adjust sliding for visible cards
-          width: `${(members.length / visibleCards) * 100}%`,
-        }}
-      >
-        {members.map((member: any, index: any) => (
-          <div key={index} className="w-1/7 flex-shrink-0 px-4">
-            <Cards
-              name={member.name}
-              title={member.position}
-              img={member.img}
-              LinkedIn={member.linkedin}
-              Instagram={member.instagram}
-              twitter={member.twitter}
-            />
-          </div>
-        ))}
-      </div>
-      <button
-        onClick={prevSlide}
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white hover:text-indigo-500"
-      >
-        <FaArrowLeft size={30} />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white hover:text-indigo-500"
-      >
-        <FaArrowRight size={30} />
-      </button>
-    </div>
   );
 }
