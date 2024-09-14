@@ -3,34 +3,32 @@
 import { useState } from "react";
 import Image from "next/image";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import React from "react";
 import { Tabs } from "antd";
 import type { TabsProps } from "antd";
 import Cards from "./cards";
+import { motion, AnimatePresence } from "framer-motion";
 
-const onChange = (key: string) => {
-  console.log(key);
-};
+// Data for leaders, personnel, and members
 const leaders = [
   {
-    img: "/images/leader-01.jpg",
-    name: "Leader 1",
+    img: "/images/leader-01.png",
+    name: "Viraj Subedi",
     position: "Community Leader",
     instagram: "https://instagram.com/leader",
     linkedin: "https://linkedin.com/leader",
     twitter: "https://twitter.com/leader",
   },
   {
-    img: "/images/leader-02.jpg",
-    name: "Leader 2",
+    img: "/images/leader-02.png",
+    name: "Srijan Adhikari",
     position: "Community Leader",
     instagram: "https://instagram.com/leader",
     linkedin: "https://linkedin.com/leader",
     twitter: "https://twitter.com/leader",
   },
   {
-    img: "/images/leader-03.jpg",
-    name: "Leader 3",
+    img: "/images/leader-03.png",
+    name: "Prashun Baral",
     position: "Community Leader",
     instagram: "https://instagram.com/leader",
     linkedin: "https://linkedin.com/leader",
@@ -40,64 +38,169 @@ const leaders = [
 
 const personnel = [
   {
-    img: "/images/personnel-01.jpg",
-    name: "Personnel 1",
-    position: "Technical Lead",
+    img: "/images/personnel-01.png",
+    name: "Dipesh Shrestha",
+    position: "DevCorps Head",
     instagram: "https://instagram.com/personnel",
     linkedin: "https://linkedin.com/personnel",
     twitter: "https://twitter.com/personnel",
   },
   {
-    img: "/images/personnel-02.jpg",
-    name: "Personnel 2",
-    position: "Support Staff",
+    img: "/images/personnel-02.png",
+    name: "Sangay Lama",
+    position: "Community Mentor",
     instagram: "https://instagram.com/personnel",
     linkedin: "https://linkedin.com/personnel",
     twitter: "https://twitter.com/personnel",
   },
+  {
+    img: "/images/personnel-03.png",
+    name: "Susan Chaudhary",
+    position: "Community Founder",
+    instagram: "https://instagram.com/personnel",
+    linkedin: "https://linkedin.com/personnel",
+    twitter: "https://twitter.com/personnel",
+  }
 ];
 
 const members = [
   {
     img: "/images/member-01.jpg",
-    name: "Membe_1r",
+    name: "Nabin Pyakurel",
     position: "Community Member",
     instagram: "https://instagram.com/member",
     linkedin: "https://linkedin.com/member",
     twitter: "https://twitter.com/member",
   },
   {
-    img: "/images/member-01.jpg",
-    name: "Member_2",
+    img: "/images/member-02.png",
+    name: "Ishor Chalise",
     position: "Community Member",
     instagram: "https://instagram.com/member",
     linkedin: "https://linkedin.com/member",
     twitter: "https://twitter.com/member",
   },
   {
-    img: "/images/member-01.jpg",
-    name: "Member_3",
+    img: "/images/member-03.png",
+    name: "Atul Adhikari",
     position: "Community Member",
     instagram: "https://instagram.com/member",
     linkedin: "https://linkedin.com/member",
     twitter: "https://twitter.com/member",
   },
   {
-    img: "/images/member-01.jpg",
-    name: "Member_4",
+    img: "/images/member-04.jpg",
+    name: "Monika Kafle",
     position: "Community Member",
     instagram: "https://instagram.com/member",
     linkedin: "https://linkedin.com/member",
     twitter: "https://twitter.com/member",
   },
   {
-    img: "/images/member-01.jpg",
-    name: "Member_4",
+    img: "/images/member-05.png",
+    name: "Kripa GC",
     position: "Community Member",
     instagram: "https://instagram.com/member",
     linkedin: "https://linkedin.com/member",
     twitter: "https://twitter.com/member",
   },
+  {
+    img: "/images/member-06.jpg",
+    name: "Nikisha Shrestha",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  {
+    img: "/images/member-07.png",
+    name: "Prachi Rajbanshi",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  {
+    img: "/images/member-08.jpg",
+    name: "Jeevan Tamang",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  {
+    img: "/images/member-09.jpg",
+    name: "Rojan Shrestha",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  {
+    img: "/images/member-10.jpg",
+    name: "Aryan Neupane",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  {
+    img: "/images/member-11.jpg",
+    name: "Saurya Aryal",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  {
+    img: "/images/member-12.jpg",
+    name: "Yuyutsu Lamsal",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  {
+    img: "/images/member-13.jpg",
+    name: "Arpan Pandey",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  {
+    img: "/images/member-14.jpg",
+    name: "Anjal Pokharel",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  {
+    img: "/images/member-15.jpg",
+    name: "Pujan Upadhyay",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  {
+    img: "/images/member-16.jpg",
+    name: "Ananya Dahal",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  {
+    img: "/images/member-17.jpg",
+    name: "Samir Gurung",
+    position: "Community Member",
+    instagram: "https://instagram.com/member",
+    linkedin: "https://linkedin.com/member",
+    twitter: "https://twitter.com/member",
+  },
+  // More members...
 ];
 
 const items: TabsProps["items"] = [
@@ -105,10 +208,17 @@ const items: TabsProps["items"] = [
     key: "1",
     label: <div className="text-white">Community Leaders</div>,
     children: (
-      <div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <AnimatePresence>
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           {leaders.map((leader, index) => (
             <Cards
+              key={index}
               name={leader.name}
               title={leader.position}
               img={leader.img}
@@ -117,13 +227,13 @@ const items: TabsProps["items"] = [
               twitter={leader.twitter}
             />
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </AnimatePresence>
     ),
   },
   {
     key: "2",
-    label: <div className="text-white">Community members</div>,
+    label: <div className="text-white">Community Members</div>,
     children: (
       <div className="relative">
         <SliderControl members={members} />
@@ -134,29 +244,32 @@ const items: TabsProps["items"] = [
     key: "3",
     label: <div className="text-white">Personnel</div>,
     children: (
-      <div>
-        <div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {personnel.map((person, index) => (
-              <Cards
-                name={person.name}
-                title={person.position}
-                img={person.img}
-                LinkedIn={person.linkedin}
-                Instagram={person.instagram}
-                twitter={person.twitter}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
+      <AnimatePresence>
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {personnel.map((person, index) => (
+            <Cards
+              key={index}
+              name={person.name}
+              title={person.position}
+              img={person.img}
+              LinkedIn={person.linkedin}
+              Instagram={person.instagram}
+              twitter={person.twitter}
+            />
+          ))}
+        </motion.div>
+      </AnimatePresence>
     ),
   },
 ];
 
 export default function Team() {
-  const [activeTab, setActiveTab] = useState("leaders");
-
   return (
     <section id="team" className="mx-auto max-w-6xl px-4 sm:px-6">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 border-t py-12 [border-image:linear-gradient(to_right,transparent,theme(colors.slate.400/.25),transparent)1] md:py-20">
@@ -180,59 +293,41 @@ export default function Team() {
           defaultActiveKey="1"
           className="text-white"
           items={items}
-          onChange={onChange}
+          onChange={(key) => console.log(key)}
         />
       </div>
     </section>
   );
 }
 
-function TeamCard({
-  img,
-  name,
-  position,
-}: {
-  img: string;
-  name: string;
-  position: string;
-}) {
-  return (
-    <div className="bg-gray-800 rounded-lg p-5 text-center">
-      <Image
-        src={img}
-        alt={name}
-        width={100}
-        height={100}
-        className="mx-auto rounded-full"
-      />
-      <h3 className="mt-4 text-xl font-bold text-gray-200">{name}</h3>
-      <p className="text-indigo-200/65">{position}</p>
-    </div>
-  );
-}
-
+// Slider for Community Members
 function SliderControl({ members }: { members: any }) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const visibleCards = 3; 
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === members.length - 1 ? 0 : prev + 1));
+    setCurrentSlide((prev) =>
+      prev === members.length - visibleCards ? 0 : prev + 1
+    );
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? members.length - 1 : prev - 1));
+    setCurrentSlide((prev) =>
+      prev === 0 ? members.length - visibleCards : prev - 1
+    );
   };
-
+  
   return (
     <div className="overflow-hidden relative">
       <div
-        className="flex justify-around transition-transform ease-in-out duration-500"
+        className="flex transition-transform ease-in-out duration-500"
         style={{
-          transform: `translateX(-${(currentSlide * 100) / 3}%)`,
-          width: `${(members.length / 3) * 100}%`,
+          transform: `translateX(-${(currentSlide * 100) / visibleCards}%)`, // Adjust sliding for visible cards
+          width: `${(members.length / visibleCards) * 100}%`,
         }}
       >
         {members.map((member: any, index: any) => (
-          <div key={index} className="w-1/3 flex-shrink-0">
+          <div key={index} className="w-1/7 flex-shrink-0 px-4">
             <Cards
               name={member.name}
               title={member.position}
@@ -246,15 +341,15 @@ function SliderControl({ members }: { members: any }) {
       </div>
       <button
         onClick={prevSlide}
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white"
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 text-white hover:text-indigo-500"
       >
-        <FaArrowLeft size={20} />
+        <FaArrowLeft size={30} />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white"
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white hover:text-indigo-500"
       >
-        <FaArrowRight size={20} />
+        <FaArrowRight size={30} />
       </button>
     </div>
   );
