@@ -1,12 +1,13 @@
 export const metadata = {
-  title: "Home - Open PRO",
-  description: "Page description",
+  title: "Ethical HCK",
+  description: "Innovate, Secure and Protect",
 };
 
 import PageIllustration from "@/components/page-illustration";
 import Hero from "@/components/hero-home";
 import Workflows from "@/components/workflows";
 import Testimonials from "@/components/testimonials";
+import Images from "@/components/ui/images";
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
       <Hero />
       <Workflows />
       <Testimonials />
-      
+      <Images />
     </>
   );
 }
