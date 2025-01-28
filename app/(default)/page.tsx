@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Home - Open PRO",
-  description: "Page description",
+  title: "Ethical HCK",
+  description: "Innovate, Secure, and Protect",
 };
 
 import PageIllustration from "@/components/page-illustration";
