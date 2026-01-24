@@ -6,13 +6,13 @@ export default function HeroHome() {
     <section>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Hero content */}
-        <div className="pt-16 md:pt-24 md:py-20">
+        <div className="pt-12 md:pt-16 md:py-16">
           {/* Two column layout */}
           <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
             {/* Left side - Content */}
             <div className="lg:w-1/2 pb-10 md:pb-10">
               <h1
-                className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.gray.200),theme(colors.indigo.200),theme(colors.gray.50),theme(colors.indigo.300),theme(colors.gray.200))] bg-[length:200%_auto] bg-clip-text pb-2 font-nacelle text-4xl font-semibold text-transparent md:text-5xl pt-20"
+                className="animate-[gradient_6s_linear_infinite] bg-[linear-gradient(to_right,theme(colors.gray.200),theme(colors.indigo.200),theme(colors.gray.50),theme(colors.indigo.300),theme(colors.gray.200))] bg-[length:200%_auto] bg-clip-text pb-2 font-nacelle text-4xl font-semibold text-transparent md:text-5xl pt-12"
                 data-aos="fade-up"
               >
                 Ethical HCK
