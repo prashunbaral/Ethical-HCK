@@ -5,17 +5,16 @@ export const metadata = {
 
 import PageIllustration from "@/components/page-illustration";
 import Hero from "@/components/hero-home";
-import Workflows from "@/components/workflows";
-import Testimonials from "@/components/testimonials";
+import FeaturedEvents from "@/components/featured-events";
+import FeaturedLeaders from "@/components/featured-leaders";
 
 export default function Home() {
   return (
     <>
       <PageIllustration />
       <Hero />
-      <Workflows />
-      <Testimonials />
-      
+      <FeaturedEvents />
+      <FeaturedLeaders />
     </>
   );
 }

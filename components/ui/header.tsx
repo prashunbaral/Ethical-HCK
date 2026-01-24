@@ -1,9 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Logo from "./logo";
 
 export default function Header() {
+  const pathname = usePathname();
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/events", label: "Events" },
+    { href: "/team", label: "Team" },
+    { href: "/gallery", label: "Gallery" },
+    { href: "/contact", label: "Contact" },
+  ];
+
   return (
     <header className="sticky top-0 z-50 w-full">
       <div className="w-full">
@@ -15,26 +26,20 @@ export default function Header() {
 
           {/* Navbar links */}
           <ul className="flex flex-1 items-center justify-end gap-6 px-6">
-            <li>
-              <Link href="/" className="text-gray-300 hover:text-white">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link href="#events" className="text-gray-300 hover:text-white">
-                Events
-              </Link>
-            </li>
-            <li>
-              <Link href="#team" className="text-gray-300 hover:text-white">
-                Team
-              </Link>
-            </li>
-            <li>
-              <Link href="#contact" className="text-gray-300 hover:text-white">
-                Contact
-              </Link>
-            </li>
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className={`transition-colors ${
+                    pathname === link.href
+                      ? "text-white font-semibold"
+                      : "text-gray-300 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
