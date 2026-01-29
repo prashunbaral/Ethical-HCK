@@ -1,7 +1,38 @@
-import { FaLinkedin, FaInstagram, FaFacebook, FaDiscord, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+"use client";
+
+import { useState } from "react";
+import { FaLinkedin, FaInstagram, FaFacebook, FaDiscord, FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from "react-icons/fa";
 import PageIllustration from "@/components/page-illustration";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      
+      // Reset status after 5 seconds
+      setTimeout(() => setSubmitStatus("idle"), 5000);
+    }, 2000);
+  };
+
   return (
     <>
       <PageIllustration />
@@ -19,13 +50,108 @@ export default function ContactPage() {
             </h1>
             <p className="text-lg text-indigo-200/65">
               Have questions or want to collaborate? We'd love to hear from you.
-              Reach out to us through any of the channels below.
             </p>
           </div>
 
-          {/* Contact Cards */}
-          <div className="mx-auto max-w-4xl">
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto max-w-5xl">
+            {/* Contact Form */}
+            <div className="mb-12 rounded-2xl bg-gray-800/50 p-8 backdrop-blur-sm border border-gray-700/50">
+              <h2 className="text-2xl font-semibold text-gray-200 mb-6">Send us a message</h2>
+              
+              {submitStatus === "success" && (
+                <div className="mb-6 rounded-lg bg-green-500/10 border border-green-500/50 p-4 text-green-400">
+                  Thank you for your message! We'll get back to you soon.
+                </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                      Your Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full rounded-lg bg-gray-900/50 border border-gray-700 px-4 py-3 text-gray-200 placeholder-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full rounded-lg bg-gray-900/50 border border-gray-700 px-4 py-3 text-gray-200 placeholder-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                    Subject *
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    className="w-full rounded-lg bg-gray-900/50 border border-gray-700 px-4 py-3 text-gray-200 placeholder-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition"
+                    placeholder="How can we help you?"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={6}
+                    className="w-full rounded-lg bg-gray-900/50 border border-gray-700 px-4 py-3 text-gray-200 placeholder-gray-500 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition resize-none"
+                    placeholder="Tell us more about your inquiry..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-indigo-600 px-8 py-3 font-medium text-white transition-all hover:from-indigo-600 hover:to-indigo-700 hover:shadow-lg hover:shadow-indigo-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <FaPaperPlane className="h-5 w-5" />
+                      Send Message
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
+
+            {/* Contact Cards */}
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
               {/* Email Card */}
               <a
                 href="mailto:ethicalhck@heraldcollege.edu.np"

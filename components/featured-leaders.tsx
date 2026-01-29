@@ -6,7 +6,7 @@ import Spotlight from "@/components/spotlight";
 
 const leaders = [
   {
-    img: "/images/member-01.JPG",
+    img: "/images/nabin-pyakurel.jpg",
     name: "Nabin Pyakurel",
     position: "Community Leader",
     instagram: "https://www.instagram.com/nabin.pyakurel/",
@@ -14,7 +14,7 @@ const leaders = [
     twitter: "https://x.com/nabinpyakurel4?s=21",
   },
   {
-    img: "/images/leader.png",
+    img: "/images/prashun-baral.png",
     name: "Prashun Baral",
     position: "Community Leader",
     instagram: "https://www.instagram.com/prashun.sh",
@@ -22,7 +22,7 @@ const leaders = [
     twitter: "https://www.linkedin.com/in/prashunbaral/",
   },
   {
-    img: "/images/member-04.png",
+    img: "/images/monika-kafle.png",
     name: "Monika Kafle",
     position: "Community Leader",
     instagram: "https://instagram.com/member",
@@ -30,7 +30,7 @@ const leaders = [
     twitter: "https://twitter.com/member",
   },
   {
-    img: "/images/member-09.jpg",
+    img: "/images/rojan-shrestha.png",
     name: "Rojan Shrestha",
     position: "Community Leader",
     instagram: "https://www.instagram.com/rojanshrestha987/",
@@ -66,7 +66,7 @@ export default function FeaturedLeaders() {
                 key={index}
                 className="group/card relative h-full overflow-hidden rounded-2xl bg-gray-800 p-px before:pointer-events-none before:absolute before:-left-40 before:-top-40 before:z-10 before:h-80 before:w-80 before:translate-x-[var(--mouse-x)] before:translate-y-[var(--mouse-y)] before:rounded-full before:bg-indigo-500/80 before:opacity-0 before:blur-3xl before:transition-opacity before:duration-500 after:pointer-events-none after:absolute after:-left-48 after:-top-48 after:z-30 after:h-64 after:w-64 after:translate-x-[var(--mouse-x)] after:translate-y-[var(--mouse-y)] after:rounded-full after:bg-indigo-500 after:opacity-0 after:blur-3xl after:transition-opacity after:duration-500 hover:after:opacity-20 hover:before:opacity-100"
               >
-                <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-gray-950 after:absolute after:inset-0 after:bg-gradient-to-br after:from-gray-900/50 after:via-gray-800/25 after:to-gray-900/50">
+                <div className="relative z-20 h-full overflow-hidden rounded-[inherit] bg-gray-950 after:pointer-events-none after:absolute after:inset-0 after:bg-gradient-to-br after:from-gray-900/50 after:via-gray-800/25 after:to-gray-900/50">
                   {/* Image */}
                   <div className="relative w-full h-[250px] overflow-hidden">
                     <Image
@@ -77,7 +77,7 @@ export default function FeaturedLeaders() {
                     />
                   </div>
                   {/* Content */}
-                  <div className="p-5 text-center">
+                  <div className="relative z-30 p-5 text-center">
                     <h3 className="text-lg font-semibold text-gray-200 mb-1">
                       {leader.name}
                     </h3>
@@ -85,12 +85,12 @@ export default function FeaturedLeaders() {
                       {leader.position}
                     </p>
                     {/* Social Links */}
-                    <div className="flex justify-center gap-4">
+                    <div className="relative z-40 flex justify-center gap-4">
                       <a
                         href={leader.twitter}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-indigo-400 transition-colors"
+                        className="relative z-50 text-gray-400 hover:text-indigo-400 transition-colors"
                       >
                         <svg
                           className="w-5 h-5 fill-current"
@@ -104,7 +104,7 @@ export default function FeaturedLeaders() {
                         href={leader.instagram}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-indigo-400 transition-colors"
+                        className="relative z-50 text-gray-400 hover:text-indigo-400 transition-colors"
                       >
                         <svg
                           className="w-5 h-5 fill-current"
@@ -118,7 +118,7 @@ export default function FeaturedLeaders() {
                         href={leader.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-indigo-400 transition-colors"
+                        className="relative z-50 text-gray-400 hover:text-indigo-400 transition-colors"
                       >
                         <svg
                           className="w-5 h-5 fill-current"

@@ -177,18 +177,6 @@ export default function Footer() {
               </div>
             </div>
           </div>
-
-          {/* Bottom bar */}
-          <div className="mt-12 pt-8 border-t border-gray-800/50">
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-              <p className="text-sm text-gray-500">
-                © {new Date().getFullYear()} Ethical HCK. All rights reserved.
-              </p>
-              <p className="text-xs text-gray-600">
-                Made with 💜 by DevCorps
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </footer>

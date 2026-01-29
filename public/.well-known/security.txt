@@ -1,0 +1,11 @@
+Contact: ethicalhck@heraldcollege.edu.np
+Preferred-Languages: en
+Canonical: https://ethicalhck.com/.well-known/security.txt
+
+# Security Policy
+
+If you discover a security vulnerability within this project, please send an email to ethicalhck@heraldcollege.edu.np. All security vulnerabilities will be promptly addressed.
+
+Please do not publicly disclose the issue until it has been addressed by our team.
+
+We appreciate your efforts to responsibly disclose your findings.

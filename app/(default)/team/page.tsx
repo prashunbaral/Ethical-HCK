@@ -1,223 +1,105 @@
 "use client";
 
 import { useState } from "react";
-import { Tabs } from "antd";
-import type { TabsProps } from "antd";
 import Cards from "@/components/cards";
 import { motion, AnimatePresence } from "framer-motion";
 import PageIllustration from "@/components/page-illustration";
 import Spotlight from "@/components/spotlight";
+import { leaders, personnel, members } from "@/data/team";
 
-// Data for leaders, personnel, and members
-const leaders = [
-  {
-    img: "/images/member-01.JPG",
-    name: "Nabin Pyakurel",
-    position: "Community Leader",
-    instagram: "https://www.instagram.com/nabin.pyakurel/",
-    linkedin: "https://www.linkedin.com/in/nabin-pyakurel-04b92126b/",
-    twitter: "https://x.com/nabinpyakurel4?s=21",
-  },
-  {
-    img: "/images/leader.png",
-    name: "Prashun Baral",
-    position: "Community Leader",
-    instagram: "https://www.instagram.com/prashun.sh",
-    linkedin: "https://www.linkedin.com/in/prashun-baral-66aa67249/",
-    twitter: "https://www.linkedin.com/in/prashunbaral/",
-  },
-  {
-    img: "/images/member-04.png",
-    name: "Monika Kafle",
-    position: "Community Leader",
-    instagram: "https://instagram.com/member",
-    linkedin: "https://linkedin.com/member",
-    twitter: "https://twitter.com/member",
-  },
-  {
-    img: "/images/member-09.jpg",
-    name: "Rojan Shrestha",
-    position: "Community Leader",
-    instagram: "https://www.instagram.com/rojanshrestha987/",
-    linkedin: "https://www.linkedin.com/in/rojan-shrestha2121/",
-    twitter: "https://x.com/rojanstha621?s=11",
-  },
-];
-
-const personnel = [
-  {
-    img: "/images/personnel-01.png",
-    name: "Dipesh Shrestha",
-    position: "DevCorps Head",
-    instagram: "https://instagram.com/personnel",
-    linkedin: "https://www.linkedin.com/in/dipeshshrestha1221/",
-    twitter: "https://twitter.com/personnel",
-  },
-  {
-    img: "/images/leader-01.png",
-    name: "Viraj Subedi",
-    position: "Community Mentor",
-    instagram: "https://www.instagram.com/viraj_subedi",
-    linkedin: "https://www.linkedin.com/in/viraj-subedi-3852a9258/",
-    twitter: "https://www.linkedin.com/in/viraj-subedi/",
-  },
-  {
-    img: "/images/personnel-03.png",
-    name: "Susan Chaudhary",
-    position: "Community Founder",
-    instagram: "https://instagram.com/personnel",
-    linkedin: "https://linkedin.com/personnel",
-    twitter: "https://twitter.com/personnel",
-  },
-];
-
-const members = [
-  {
-    img: "/images/member-02.png",
-    name: "Ishor Chalise",
-    position: "Community Member",
-    instagram: "https://www.instagram.com/chalise.ishwor/",
-    linkedin: "https://www.linkedin.com/in/ishwor-chalise-036574293/",
-    twitter: "https://x.com/IshworCha",
-  },
-  {
-    img: "/images/member-03.png",
-    name: "Atul Adhikari",
-    position: "Community Member",
-    instagram: "https://www.instagram.com/atuladhikari4/",
-    linkedin: "https://www.linkedin.com/in/atul-adhikari-833945285/",
-    twitter: "https://x.com/Atul_Adhikari01",
-  },
-  {
-    img: "/images/member-05.png",
-    name: "Kripa GC",
-    position: "Community Member",
-    instagram: "https://instagram.com/member",
-    linkedin: "https://linkedin.com/member",
-    twitter: "https://twitter.com/member",
-  },
-  {
-    img: "/images/member-06.jpg",
-    name: "Nikisha Shrestha",
-    position: "Community Member",
-    instagram: "https://instagram.com/member",
-    linkedin: "https://linkedin.com/member",
-    twitter: "https://twitter.com/member",
-  },
-  {
-    img: "/images/member-11.jpg",
-    name: "Saurya Aryal",
-    position: "Community Member",
-    instagram: "https://instagram.com/member",
-    linkedin: "https://linkedin.com/member",
-    twitter: "https://twitter.com/member",
-  },
-  {
-    img: "/images/member-15.JPG",
-    name: "Pujan Upadhyay",
-    position: "Community Member",
-    instagram: "https://instagram.com/member",
-    linkedin: "https://linkedin.com/member",
-    twitter: "https://twitter.com/member",
-  },
-  {
-    img: "/images/member-16.png",
-    name: "Ananya Dahal",
-    position: "Community Member",
-    instagram: "https://instagram.com/member",
-    linkedin: "https://linkedin.com/member",
-    twitter: "https://twitter.com/member",
-  },
-];
-
-const items: TabsProps["items"] = [
-  {
-    key: "1",
-    label: <div className="text-white">Community Leaders</div>,
-    children: (
-      <AnimatePresence>
-        <Spotlight className="group mx-auto grid max-w-md items-start gap-6 lg:max-w-none lg:grid-cols-4">
-          {leaders.map((leader, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Cards
-                name={leader.name}
-                title={leader.position}
-                img={leader.img}
-                LinkedIn={leader.linkedin}
-                Instagram={leader.instagram}
-                twitter={leader.twitter}
-              />
-            </motion.div>
-          ))}
-        </Spotlight>
-      </AnimatePresence>
-    ),
-  },
-  {
-    key: "2",
-    label: <div className="text-white">Community Members</div>,
-    children: (
-      <AnimatePresence>
-        <Spotlight className="group mx-auto grid max-w-md items-start gap-6 lg:max-w-none lg:grid-cols-3 xl:grid-cols-4">
-          {members.map((member, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-            >
-              <Cards
-                name={member.name}
-                title={member.position}
-                img={member.img}
-                LinkedIn={member.linkedin}
-                Instagram={member.instagram}
-                twitter={member.twitter}
-              />
-            </motion.div>
-          ))}
-        </Spotlight>
-      </AnimatePresence>
-    ),
-  },
-  {
-    key: "3",
-    label: <div className="text-white">Personnel</div>,
-    children: (
-      <AnimatePresence>
-        <Spotlight className="group mx-auto grid max-w-md items-start gap-6 lg:max-w-none lg:grid-cols-3">
-          {personnel.map((person, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Cards
-                name={person.name}
-                title={person.position}
-                img={person.img}
-                LinkedIn={person.linkedin}
-                Instagram={person.instagram}
-                twitter={person.twitter}
-              />
-            </motion.div>
-          ))}
-        </Spotlight>
-      </AnimatePresence>
-    ),
-  },
-];
+type TabKey = "leaders" | "members" | "personnel";
 
 export default function TeamPage() {
+  const [activeTab, setActiveTab] = useState<TabKey>("leaders");
+
+  const tabs = [
+    { key: "leaders" as TabKey, label: "Community Leaders" },
+    { key: "members" as TabKey, label: "Community Members" },
+    { key: "personnel" as TabKey, label: "Personnel" },
+  ];
+
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case "leaders":
+        return (
+          <AnimatePresence mode="wait">
+            <Spotlight className="group mx-auto grid max-w-md items-start gap-6 lg:max-w-none lg:grid-cols-4">
+              {leaders.map((leader, index) => (
+                <motion.div
+                  key={leader.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Cards
+                    name={leader.name}
+                    title={leader.role}
+                    img={leader.image}
+                    LinkedIn={leader.linkedin}
+                    Instagram={leader.github}
+                    twitter={leader.twitter}
+                  />
+                </motion.div>
+              ))}
+            </Spotlight>
+          </AnimatePresence>
+        );
+
+      case "members":
+        return (
+          <AnimatePresence mode="wait">
+            <Spotlight className="group mx-auto grid max-w-md items-start gap-6 lg:max-w-none lg:grid-cols-3 xl:grid-cols-4">
+              {members.map((member, index) => (
+                <motion.div
+                  key={member.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                >
+                  <Cards
+                    name={member.name}
+                    title={member.role}
+                    img={member.image}
+                    LinkedIn={member.linkedin}
+                    Instagram={member.github}
+                    twitter={member.twitter}
+                  />
+                </motion.div>
+              ))}
+            </Spotlight>
+          </AnimatePresence>
+        );
+
+      case "personnel":
+        return (
+          <AnimatePresence mode="wait">
+            <Spotlight className="group mx-auto grid max-w-md items-start gap-6 lg:max-w-none lg:grid-cols-3">
+              {personnel.map((person, index) => (
+                <motion.div
+                  key={person.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Cards
+                    name={person.name}
+                    title={person.role}
+                    img={person.image}
+                    LinkedIn={person.linkedin}
+                    Instagram={person.github}
+                    twitter={person.twitter}
+                  />
+                </motion.div>
+              ))}
+            </Spotlight>
+          </AnimatePresence>
+        );
+    }
+  };
+
   return (
     <>
       <PageIllustration />
@@ -240,13 +122,27 @@ export default function TeamPage() {
             </p>
           </div>
 
-          {/* Team tabs */}
-          <Tabs
-            defaultActiveKey="1"
-            className="text-white"
-            items={items}
-            centered
-          />
+          {/* Custom Tabs */}
+          <div className="mb-8">
+            <div className="flex justify-center border-b border-gray-800">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key)}
+                  className={`px-6 py-3 font-medium transition-all ${
+                    activeTab === tab.key
+                      ? "border-b-2 border-indigo-500 text-white"
+                      : "text-gray-400 hover:text-gray-300"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Tab content */}
+          <div className="mt-8">{renderTabContent()}</div>
         </div>
       </section>
     </>
